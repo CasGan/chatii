@@ -12,10 +12,12 @@ export const ENV = Object.freeze( {
     CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
     CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
     CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
+    ARCJET_KEY: process.env.ARCJET_KEY,
+    ARCJET_ENV: process.env.ARCJET_ENV,
 });
 
 // fail fast in production for required keys
-const requiredKeys = ["MONGO_URI", "JWT_SECRET", "CLIENT_URL", "RESEND_API_KEY", "EMAIL_FROM", "CLOUDINARY_CLOUD_NAME", "CLOUDINARY_API_KEY", "CLOUDINARY_API_SECRET"];
+const requiredKeys = ["MONGO_URI", "JWT_SECRET", "CLIENT_URL", "RESEND_API_KEY", "EMAIL_FROM", "CLOUDINARY_CLOUD_NAME", "CLOUDINARY_API_KEY", "CLOUDINARY_API_SECRET", "ARCJET_KEY", "ARCJET_ENV"];
 if(ENV.NODE_ENV === "production"){
     const missing = requiredKeys.filter((k) => !ENV[k]);
     if(missing.length){
