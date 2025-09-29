@@ -69,7 +69,7 @@ function SignUpPage() {
                 <div>
                   <label className="auth-input-label">Password</label>
                   <div className="relative">
-                    <UserIcon className="auth-input-icon"/>
+                    <LockIcon className="auth-input-icon"/>
 
                     <input 
                       type="password" 
@@ -86,7 +86,7 @@ function SignUpPage() {
                     <LoaderIcon className="w-full h-5 animate-spin text-center"/>
                   ) : (
                     "Create Account"
-                  )};
+                  )}
                 </button>
               </form>
 
@@ -126,7 +126,7 @@ function SignUpPage() {
         </BorderAnimatedContainer>
       </div>
     </div>
-  )
+  );
 }
 
 export default SignUpPage
