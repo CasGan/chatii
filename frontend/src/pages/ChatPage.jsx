@@ -1,11 +1,11 @@
 import BorderAnimatedContainer from "../components/BorderAnimatedContainer.jsx";
 import ProfileHeader from "../components/ProfileHeader.jsx";
 import { useChatStore } from "../store/useChatStore.js";
-import ActiveTabSwitch from "./ActiveTabSwitch.jsx";
-import ChatContainer from "./ChatContainer.jsx";
-import ChatsList from "./ChatsList.jsx";
-import ContactList from "./ContactList.jsx";
-import NoConversationPlaceholder from "./NoConversationPlaceholder.jsx";
+import ActiveTabSwitch from "../components/ActiveTabSwitch.jsx";
+import ChatContainer from "../components/ChatContainer.jsx";
+import ChatsList from "../components/ChatsList.jsx";
+import ContactList from "../components/ContactList.jsx";
+import NoConversationPlaceholder from "../components/NoConversationPlaceholder.jsx";
 
 
 function ChatPage() {
