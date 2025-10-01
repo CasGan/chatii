@@ -13,7 +13,11 @@ const __dirname = path.resolve();
 
 const PORT = ENV.PORT || 3000;
 
-app.use(express.json({limit : "5mb" }));    //in the req.body
+//app.use(express.json({limit : "5mb" }));    //in the req.body
+app.use(express.json({ limit: "15mb" }));   //json bodies includes base64 data URLs
+app.use(express.urlencoded({extended: true, limit: "15mb"})); // form bodies
+
+
 app.use(cors({origin: ENV.CLIENT_URL, credentials: true}));
 app.use(cookieParser());
 

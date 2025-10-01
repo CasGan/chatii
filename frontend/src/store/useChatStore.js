@@ -57,9 +57,11 @@ export const useChatStore = create((set, get) => ({
     },
 
     sendMessage: async(messageData) => {
-        const {selectedUser, messages} = get(); 
+        const {selectedUser} = get(); 
 
         const { authUser } = useAuthStore.getState() 
+
+        if(!selectedUser || !authUser) return; 
 
         const tempId = `temp-${Date.now()}`
 
@@ -75,14 +77,22 @@ export const useChatStore = create((set, get) => ({
         };
 
         // immediately update ui by added the message 
-        set({messages: [...messages, optimisticMessage]})
+        set((state) => ({messages: [...state.messages, optimisticMessage]}));
 
         try {
-            const res = await axiosInstance.post(`/messages/send/${selectedUser._id}`, messageData);
-            set({messages: messages.concat(res.data)})
+            const res = await axiosInstance.post(`/messages/send123/${selectedUser._id}`, messageData);
+            set((state) => {
+            const idx = state.messages.findIndex((m) => m._id === tempId);
+            if(idx === -1) return {messages: [...state.messages, res.data]};
+            const next = state.messages.slice();
+            next[idx] = res.data; 
+            return {messages: next};
+        });
         } catch (error) {
             //remove optimistic message on failure 
-            set({messages: messages})
+            set((state) => ({
+                messages: state.messages.filter((m) => m._id !== tempId),
+            }));
             toast.error(error.response?.data?.message || "Something Went Wrong"); 
         }
     },
