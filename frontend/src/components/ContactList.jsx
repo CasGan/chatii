@@ -33,7 +33,7 @@ function ContactList() {
       </div>
     ))}
     </>
-  )
+  );
 }
 
-export default ContactList
+export default ContactList;

@@ -31,7 +31,7 @@ function ChatPage() {
 
       </BorderAnimatedContainer>
     </div>
-  )
+  );
 }
 
-export default ChatPage
+export default ChatPage;

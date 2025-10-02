@@ -12,9 +12,9 @@ const __dirname = path.resolve();
 
 const PORT = ENV.PORT || 3000;
 
-//app.use(express.json({limit : "5mb" }));    //in the req.body
-app.use(express.json({ limit: "15mb" }));   //json bodies includes base64 data URLs
-app.use(express.urlencoded({extended: true, limit: "15mb"})); // form bodies
+app.use(express.json({limit : "5mb" }));    //in the req.body
+// app.use(express.json({ limit: "15mb" }));   //json bodies includes base64 data URLs
+// app.use(express.urlencoded({extended: true, limit: "15mb"})); // form bodies
 
 
 app.use(cors({origin: ENV.CLIENT_URL, credentials: true}));
@@ -31,18 +31,18 @@ if(ENV.NODE_ENV === "production"){
         res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));  
     })
 }
-connectDB()
-    .then(() => {
-        server.listen(PORT, () => {
-            console.log(`Server running on Port: ${PORT}`);
-        });
-    })
-    .catch((err) =>{
-        console.error("Failed to connect to MongoDB: ", err);
-        process.exit(1);
-    });
+// connectDB()
+//     .then(() => {
+//         server.listen(PORT, () => {
+//             console.log(`Server running on Port: ${PORT}`);
+//         });
+//     })
+//     .catch((err) =>{
+//         console.error("Failed to connect to MongoDB: ", err);
+//         process.exit(1);
+//     });
 // "server" instead of app since using socket.io
-// server.listen(PORT, () => {
-//     console.log("Server running on port:" + PORT);
-//     connectDB();
-// }); 
+server.listen(PORT, () => {
+    console.log("Server running on port:" + PORT);
+    connectDB();
+}); 
